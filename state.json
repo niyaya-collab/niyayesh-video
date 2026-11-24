@@ -3,6 +3,19 @@
     7913503227,
     1221862634
   ],
-  "jobs": {},
-  "last_update_id": 227018091
+  "jobs": {
+    "7913503227:RVjjhjkr0hM": {
+      "chat_id": 7913503227,
+      "duration": 0,
+      "message_id": 100,
+      "mode": "audio",
+      "quality": "audio",
+      "status": "error",
+      "title": "Me And You",
+      "updated": 1795555877.0120165,
+      "url": "https://youtu.be/RVjjhjkr0hM?si=8hrRfcXGaHlEBnZB",
+      "video_id": "RVjjhjkr0hM"
+    }
+  },
+  "last_update_id": 227018093
 }
