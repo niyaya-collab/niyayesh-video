@@ -1,9 +1,9 @@
-﻿name: Video poll
+name: Video poll
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "37 */6 * * *"
+    - cron: "32 */2 * * *"
 
 permissions:
   contents: write
@@ -18,17 +18,14 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
-
       - run: python -m pip install -r requirements.txt
-
       - name: Catch up once
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           PYTHONUNBUFFERED: "1"
-          WATCH_SECONDS: "600"
+          WATCH_SECONDS: "720"
         run: python bot.py --watch
