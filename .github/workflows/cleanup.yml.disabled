@@ -1,0 +1,15 @@
+name: Cleanup releases
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Keep download links
+        run: echo "Download links stay up."
