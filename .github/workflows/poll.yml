@@ -3,8 +3,10 @@ name: Video poll
 on:
   workflow_dispatch:
   schedule:
-    - cron: "13,28,43,58 * * * *"
-    - cron: "5,20,35,50 * * * *"
+    # One wake each hour. The shift itself keeps listening for nearly three
+    # hours, so a late schedule does not put the bot to sleep. Nothing here
+    # starts another workflow.
+    - cron: "57 * * * *"
 
 permissions:
   contents: write
@@ -16,7 +18,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 170
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -28,7 +30,7 @@ jobs:
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           PYTHONUNBUFFERED: "1"
-          WATCH_SECONDS: "3600"
+          WATCH_SECONDS: "9600"
         run: python bot.py --watch
       - name: Heartbeat
         if: always()
